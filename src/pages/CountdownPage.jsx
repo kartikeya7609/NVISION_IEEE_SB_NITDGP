@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const targetDate = new Date('2026-03-15T09:00:00')
+const targetDate = new Date('2026-01-12T09:00:00')
 
 const units = [
   { key: 'days', label: 'Days' },
