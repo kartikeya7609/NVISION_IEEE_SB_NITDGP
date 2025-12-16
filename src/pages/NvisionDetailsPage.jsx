@@ -84,7 +84,7 @@ function NvisionDetailsPage() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-blue-50">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-10 top-0 h-80 w-80 rounded-full bg-rose-200/40 blur-[110px] animate-blob" />
+        <div className="absolute left-10 top-0 h-80 w-80 rounded-full bg-blue-200/40 blur-[110px] animate-blob" />
         <div className="absolute right-10 top-16 h-72 w-72 rounded-full bg-sky-200/40 blur-[110px] animate-blob" />
         <div className="absolute bottom-[-80px] left-1/3 h-96 w-96 rounded-full bg-amber-200/40 blur-[120px] animate-blob" />
       </div>
@@ -104,7 +104,7 @@ function NvisionDetailsPage() {
           {highlights.map((item) => (
             <div key={item.title} className="section-card flex flex-col gap-3">
               <div className="flex items-center gap-3">
-                <span className="h-10 w-10 rounded-2xl bg-gradient-to-br from-rose-500/80 to-orange-400/80" />
+                <span className="h-10 w-10 rounded-2xl bg-gradient-to-br from-blue-500/80 to-cyan-400/80" />
                 <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
               </div>
               <p className="text-sm text-slate-600">{item.copy}</p>
@@ -122,15 +122,15 @@ function NvisionDetailsPage() {
               {timeline.map((entry, idx) => (
                 <div key={entry.title} className="relative flex items-start gap-4">
                   <div className="flex flex-col items-center">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-orange-400 text-sm font-semibold text-white shadow-[0_15px_30px_rgba(244,63,94,0.35)]">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 text-sm font-semibold text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)]">
                       {entry.time}
                     </div>
                     {idx < timeline.length - 1 && (
-                      <div className="mt-1 h-16 w-px bg-gradient-to-b from-rose-200 to-transparent" />
+                      <div className="mt-1 h-16 w-px bg-gradient-to-b from-blue-200 to-transparent" />
                     )}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-rose-500">{entry.title}</p>
+                    <p className="text-sm font-semibold text-blue-500">{entry.title}</p>
                     <p className="text-sm text-slate-600">{entry.detail}</p>
                   </div>
                 </div>
@@ -143,13 +143,13 @@ function NvisionDetailsPage() {
             <ul className="space-y-4 text-sm text-slate-600 flex flex-row flex-wrap gap-3">
               {perks.map((perk) => (
                 <li key={perk.title} className="flex items-start flex-row gap-3">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-rose-500 to-orange-400" />
+                  <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
                   <p className="text-sm text-slate-600">{perk.detail}</p>
                 </li>
               ))}
               </ul>
-              <div className="mt-6 rounded-2xl bg-rose-50/60 p-4 text-sm text-slate-600">
-              <p className="font-semibold text-rose-500">Venue</p>
+              <div className="mt-6 rounded-2xl bg-blue-50/60 p-4 text-sm text-slate-600">
+              <p className="font-semibold text-blue-500">Venue</p>
               <p>DM Sen Auditorium,Beside ECE Department, National Institute of Technology Durgapur .</p>
             </div>
           </div>

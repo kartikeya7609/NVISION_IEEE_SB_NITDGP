@@ -21,17 +21,17 @@ const StatCard = ({ label, value }) => {
 
   return (
     <div className="section-card flex flex-col items-center justify-center text-center bg-white">
-      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">
+      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
         {label}
       </span>
       <p
         className={`mt-3 text-4xl font-black text-slate-900 transition duration-300 md:text-5xl ${
-          pulse ? 'scale-110 text-rose-500' : ''
+          pulse ? 'scale-110 text-blue-500' : ''
         }`}
       >
         {value.toString().padStart(2, '0')}
       </p>
-      <div className="mt-3 h-1 w-12 rounded-full bg-gradient-to-r from-rose-500 to-orange-400" />
+      <div className="mt-3 h-1 w-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
     </div>
   )
 }
@@ -63,7 +63,7 @@ function CountdownPage() {
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-slate-100/60">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-10 top-0 h-72 w-72 rounded-full bg-sky-200/60 blur-[120px] animate-blob" />
-        <div className="absolute left-[-100px] bottom-[-60px] h-96 w-96 rounded-full bg-rose-200/50 blur-[120px] animate-blob" />
+        <div className="absolute left-[-100px] bottom-[-60px] h-96 w-96 rounded-full bg-blue-200/50 blur-[120px] animate-blob" />
       </div>
 
       <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-10 px-4 pb-16 pt-14 text-center md:px-6 md:pt-16">
@@ -95,13 +95,13 @@ function CountdownPage() {
           <div className="flex items-center gap-3">
             <Link
               to="/events"
-              className="rounded-full bg-gradient-to-r from-rose-500 via-red-500 to-orange-400 px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(244,63,94,0.35)] transition hover:translate-y-[-1px]"
+              className="rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px]"
             >
               Explore Events
             </Link>
             <Link
               to="/nvision"
-              className="rounded-full border border-rose-200 px-5 py-3 text-xs font-semibold uppercase tracking-wide text-rose-500 transition hover:bg-rose-50"
+              className="rounded-full border border-blue-200 px-5 py-3 text-xs font-semibold uppercase tracking-wide text-blue-500 transition hover:bg-blue-50"
             >
               See Details
             </Link>

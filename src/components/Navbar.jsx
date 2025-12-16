@@ -12,7 +12,7 @@ const navItems = [
 
 const linkClasses = ({ isActive }) =>
   `text-sm md:text-base font-medium transition ${
-    isActive ? 'text-rose-600' : 'text-slate-500 hover:text-slate-900'
+    isActive ? 'text-blue-600' : 'text-slate-500 hover:text-slate-900'
   }`
 
 function Navbar() {
@@ -50,7 +50,7 @@ function Navbar() {
           <button
             type="button"
             onClick={toggle}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-[0_10px_25px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:text-rose-600 md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-[0_10px_25px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:text-blue-600 md:hidden"
             aria-label="Toggle navigation"
           >
             <span className="flex flex-col items-center justify-center gap-1">
@@ -68,7 +68,7 @@ function Navbar() {
           <Link
             to="/countdown"
             onClick={close}
-            className="hidden rounded-full bg-gradient-to-r from-rose-500 via-red-500 to-orange-400 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(244,63,94,0.35)] transition hover:translate-y-[-1px] md:inline-block"
+            className="hidden rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px] md:inline-block"
           >
             Register Now
           </Link>
@@ -95,7 +95,7 @@ function Navbar() {
           <Link
             to="/countdown"
             onClick={close}
-            className="mt-1 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-rose-500 via-red-500 to-orange-400 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(244,63,94,0.35)] transition hover:translate-y-[-1px]"
+            className="mt-1 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px]"
           >
             View Event
           </Link>

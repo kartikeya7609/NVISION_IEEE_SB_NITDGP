@@ -50,15 +50,15 @@ const links = [
 
 function Footer() {
   return (
-    <footer className="border-t border-rose-900/40 bg-gradient-to-tr from-slate-950 via-rose-950 to-black text-white">
+    <footer className="border-t border-blue-900/40 bg-gradient-to-tr from-slate-950 via-blue-950 to-black text-white">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 md:flex-row md:items-center md:justify-between md:px-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-600 via-red-600 to-orange-500 shadow-[0_20px_40px_rgba(244,63,94,0.5)]">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500 shadow-[0_20px_40px_rgba(37,99,235,0.5)]">
             <span className="text-xl font-extrabold text-white">N</span>
           </div>
           <div>
             <p className="text-lg font-extrabold text-white">NVISION</p>
-            <p className="text-sm text-rose-200/90">Best in the world tech experience.</p>
+            <p className="text-sm text-blue-200/90">Best in the world tech experience.</p>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="transition hover:text-rose-200 hover:underline"
+                className="transition hover:text-blue-200 hover:underline"
               >
                 {link.label}
               </a>
@@ -78,7 +78,7 @@ function Footer() {
               <Link
                 key={link.to}
                 to={link.to}
-                className="transition hover:text-rose-200 hover:underline"
+                className="transition hover:text-blue-200 hover:underline"
               >
                 {link.label}
               </Link>
@@ -93,7 +93,7 @@ function Footer() {
               href={social.href}
               target="_blank"
               rel="noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-rose-50 transition hover:-translate-y-0.5 hover:text-rose-200"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-blue-50 transition hover:-translate-y-0.5 hover:text-blue-200"
               aria-label={social.name}
             >
               {social.icon}
@@ -102,7 +102,7 @@ function Footer() {
         </div>
       </div>
       <div className="divider" />
-      <div className="py-4 text-center text-xs text-rose-200/80">
+      <div className="py-4 text-center text-xs text-blue-200/80">
         © {new Date().getFullYear()} NVISION. Crafted for the bold.
       </div>
     </footer>
