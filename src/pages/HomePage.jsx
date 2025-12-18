@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Canvas } from '@react-three/fiber'
 import ieeeLogo from '../assets/ieee-logo.svg'
-import RotatableCar from '../components/RotatableCar'
 
 const targetDate = new Date('2026-01-12T09:00:00')
 const registrationLink = 'https://forms.gle/your-registration-form'
@@ -48,7 +46,6 @@ function HomePage() {
   )
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft)
-  const [carZoom, setCarZoom] = useState(6)
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000)
@@ -56,24 +53,13 @@ function HomePage() {
   }, [calculateTimeLeft])
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-red-500 via-purple-500 to-blue-600">
-      {/* Car background across full page (interactive on hover) */}
-      <div className="absolute inset-0 z-0">
-        <Canvas
-          style={{ width: '100%', height: '100%' }}
-          gl={{ alpha: true, antialias: true }}
-        >
-          <RotatableCar zoom={carZoom} />
-        </Canvas>
-      </div>
-
-      {/* Soft overlay to keep text readable on top of car */}
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-red-500/60 via-purple-500/60 to-blue-600/60" />
-
-      {/* Hero area at TOP of page, above background */}
+    <section
+      id="top-hero"
+      className="relative overflow-hidden bg-white"
+    >
+      {/* Hero area at TOP of page */}
       <div className="relative min-h-[70vh]">
-        {/* pointer-events-none lets drag pass through to Canvas; we'll re-enable only on buttons */}
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16 pointer-events-none">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl space-y-6">
             <span className="pill">An IEEE SB NITD Event </span>
@@ -93,7 +79,7 @@ function HomePage() {
                   Hands-on robotics, coding labs, and live car simulations
               </span>
             </div>
-              <div className="flex flex-wrap items-center gap-4 pointer-events-auto">
+              <div className="flex flex-wrap items-center gap-4">
               <a
                 href={registrationLink}
                 target="_blank"
@@ -148,28 +134,11 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Simple zoom controls on the side (only affect background car) */}
-      <div className="fixed right-4 top-1/2 z-20 -translate-y-1/2">
-        <div className="flex flex-col rounded-2xl bg-black/40 p-2 backdrop-blur-sm shadow-lg space-y-2">
-          <button
-            type="button"
-            className="rounded-lg bg-white/95 px-3 py-1 text-xs font-semibold text-slate-900 hover:bg-white"
-            onClick={() => setCarZoom((z) => Math.max(4, z - 0.5))}
-          >
-            Zoom In
-          </button>
-          <button
-            type="button"
-            className="rounded-lg bg-white/95 px-3 py-1 text-xs font-semibold text-slate-900 hover:bg-white"
-            onClick={() => setCarZoom((z) => Math.min(12, z + 0.5))}
-          >
-            Zoom Out
-          </button>
-          </div>
-        </div>
-
-      {/* Rest of the page content below hero (allows drag to pass through to car) */}
-      <div className="relative z-10 mx-auto mt-10 flex max-w-6xl flex-col gap-12 px-4 pb-16 md:px-6 pointer-events-none">
+      {/* Rest of the page content below hero */}
+      <div
+        id="highlights-section"
+        className="relative z-10 mx-auto mt-10 flex max-w-6xl flex-col gap-12 px-4 pb-16 md:px-6"
+      >
         <div className="section-card">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>

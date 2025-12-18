@@ -2,9 +2,9 @@ import { Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import Loader from './components/Loader'
+import HomePage from './pages/HomePage'
 import CarouselPage from './pages/CarouselPage'
 import CountdownPage from './pages/CountdownPage'
-import HomePage from './pages/HomePage'
 import NvisionDetailsPage from './pages/NvisionDetailsPage'
 import SponsorsPage from './pages/SponsorsPage'
 import ContactPage from './pages/ContactPage'
@@ -19,15 +19,15 @@ function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-red-500 via-purple-500 to-blue-600 text-slate-50">
+    <div className="relative min-h-screen bg-white text-slate-800">
       {isLoading && <Loader />}
       <div className="relative z-10 flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/countdown" element={<CountdownPage />} />
             <Route path="/events" element={<CarouselPage />} />
+            <Route path="/countdown" element={<CountdownPage />} />
             <Route path="/nvision" element={<NvisionDetailsPage />} />
             <Route path="/sponsors" element={<SponsorsPage />} />
             <Route path="/contact" element={<ContactPage />} />
