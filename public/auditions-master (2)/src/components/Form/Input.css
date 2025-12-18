@@ -1,0 +1,34 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:auto;
+    margin-left:auto;
+    margin-right:auto;
+    padding:50px;
+    gap: 50px;
+}
+
+.essay{
+    width:80vw !important;
+}
+
+.form #filled-basic-label{
+    color: rgb(180, 180, 180);
+}
+
+.form .MuiFilledInput-root{
+    color:azure;
+}
+
+.form .input input[type="text"]{
+    min-width: 200px;
+    max-width: 400px;
+    width: 40vw;
+}
+
+@media screen and (max-width: 768px) {
+    .form .input h2{
+        font-size: 20px;
+    }
+}

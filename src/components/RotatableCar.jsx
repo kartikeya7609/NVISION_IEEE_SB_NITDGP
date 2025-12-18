@@ -1,6 +1,6 @@
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useMemo, useState } from 'react'
 import { useFrame, useLoader } from '@react-three/fiber'
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
+import { PerspectiveCamera, OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 import nvisionTexture from '../assets/Nvision_1st_slide.jpg'
 
@@ -17,7 +17,8 @@ function Car({ isDragging }) {
   
   // Auto-rotate when not being dragged
   useFrame((state, delta) => {
-    if (carRef.current && !isDragging) {
+    if (!carRef.current) return
+    if (!isDragging) {
       carRef.current.rotation.y += delta * 0.3
     }
   })
@@ -188,13 +189,12 @@ function Car({ isDragging }) {
   )
 }
 
-export default function RotatableCar() {
-  const controlsRef = useRef()
+export default function RotatableCar({ zoom = 6 }) {
   const [isDragging, setIsDragging] = useState(false)
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 1.5, 6]} fov={60} />
+      <PerspectiveCamera makeDefault position={[0, 1.5, zoom]} fov={60} />
       <ambientLight intensity={0.8} />
       <directionalLight position={[5, 5, 5]} intensity={2.0} castShadow />
       <directionalLight position={[-5, 3, -5]} intensity={1.0} />
@@ -202,17 +202,14 @@ export default function RotatableCar() {
       <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={0.8} />
       <spotLight position={[-10, 5, -10]} angle={0.4} penumbra={1} intensity={0.5} />
       
+      {/* Car auto-rotates; OrbitControls let the user rotate/zoom with mouse */}
       <Car isDragging={isDragging} />
-      
+
       <OrbitControls
-        ref={controlsRef}
-        enableZoom={true}
         enablePan={false}
+        enableZoom
         minDistance={4}
-        maxDistance={10}
-        minPolarAngle={Math.PI / 4}
-        maxPolarAngle={Math.PI / 1.8}
-        autoRotate={false}
+        maxDistance={12}
         onStart={() => setIsDragging(true)}
         onEnd={() => setIsDragging(false)}
       />

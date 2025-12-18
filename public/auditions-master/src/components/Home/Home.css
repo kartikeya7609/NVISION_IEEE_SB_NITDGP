@@ -1,0 +1,121 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	min-height: 100vh;
+	background-image: url("https://i.gifer.com/Az1x.gif");
+}
+
+.card {
+	width: 70vw;
+	min-height: 50vh;
+	margin: 1em;
+	padding: 50px 30px;
+	backdrop-filter: blur(10px);
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 20px;
+	box-shadow: 0px 0px 40px rgb(9, 13, 73);
+	border: 0px solid rgb(36, 36, 88);
+	border-bottom: 8px solid rgb(182, 197, 248);
+}
+
+.bar{
+	width: 90%;
+	height: 10px;
+	margin: auto;
+	margin-bottom: 20px;
+	border-radius: 20px;
+	background: linear-gradient(90deg, rgb(0, 255, 0) 0%, lightgray 0%);
+}
+
+.glitch {
+	font-size: 4rem;
+	font-weight: bold;
+	position: relative;
+	color: rgb(176, 225, 230);
+	text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+		-0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+		0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+
+	animation: glitch 500ms infinite;
+}
+
+.glitch span {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.glitch span:first-child {
+	animation: glitch 650ms infinite;
+	clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+	transform: translate(-0.05em, -0.0125em);
+	opacity: 0.8;
+}
+.glitch span:last-child {
+	animation: glitch 375ms infinite;
+	clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+	transform: translate(0.0125em, 0.025em);
+	opacity: 0.8;
+}
+
+@keyframes glitch {
+	0% {
+		text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+			-0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+			-0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+	}
+	14% {
+		text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+			-0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+			-0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+	}
+	15% {
+		text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+			0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+			-0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+	}
+	49% {
+		text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+			0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+			-0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+	}
+	50% {
+		text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+			0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+	}
+	99% {
+		text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+			0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+	}
+	100% {
+		text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+			-0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+			-0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-delay: -1ms !important;
+		animation-duration: 1ms !important;
+		animation-iteration-count: 1 !important;
+		background-attachment: initial !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0s !important;
+		transition-delay: 0s !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.card{
+		width: 80vw;
+		padding: 25px 15px;
+	}
+}

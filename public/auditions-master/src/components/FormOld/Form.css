@@ -1,0 +1,65 @@
+/* .card-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 60%;
+    min-width: 250px;
+    margin: auto;
+}
+
+form .block p{
+    float: left;
+    font-weight: bold;
+    color: orange;
+    font-size: 24px;
+}
+
+form .block input{
+    width: 100%;
+    font-size: 18px;
+    padding: 15px 10px 10px 10px;
+    background-color: rgba(255, 255, 255, 0.678);
+    border: none;
+    border-bottom: 4px solid gray;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.61);
+    transition: border 0.5s;
+}
+
+form .block input:focus{
+    border-color: rgb(0, 131, 218);
+}
+
+form .block .message{
+    float: left;
+    color: red;
+}
+
+form button{
+    width: fit-content;
+    padding: 15px 20px;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid cyan;
+    color: cyan;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover{
+    box-shadow: 0 0 10px cyan;
+}
+
+form .btnbox{
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+}

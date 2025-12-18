@@ -48,6 +48,7 @@ function HomePage() {
   )
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft)
+  const [carZoom, setCarZoom] = useState(6)
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000)
@@ -56,99 +57,118 @@ function HomePage() {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-red-500 via-purple-500 to-blue-600">
-      {/* 3D Car Background (interactive) */}
-      <div className="absolute inset-0 z-0 pointer-events-auto">
+      {/* Car background across full page (interactive on hover) */}
+      <div className="absolute inset-0 z-0">
         <Canvas
           style={{ width: '100%', height: '100%' }}
           gl={{ alpha: true, antialias: true }}
         >
-          <RotatableCar />
+          <RotatableCar zoom={carZoom} />
         </Canvas>
       </div>
-      
-      {/* Gradient Overlay for better text readability */}
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-red-500/80 via-purple-500/80 to-blue-600/80" />
-      
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute left-1/4 top-0 h-80 w-80 rounded-full bg-red-300/40 blur-[120px] animate-blob" />
-        <div className="absolute right-1/5 top-10 h-72 w-72 rounded-full bg-purple-300/40 blur-[110px] animate-blob" />
-        <div className="absolute -left-16 bottom-0 h-72 w-72 rounded-full bg-blue-300/40 blur-[110px] animate-blob" />
-      </div>
 
-      {/* Main content sits above but lets pointer events fall through by default */}
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16 pointer-events-none">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-2xl space-y-6">
-            <span className="pill">An IEEE SB NITD Event </span>
-            <h1 className="text-4xl font-black leading-tight text-slate-900 md:text-5xl lg:text-6xl">
-              <span className="gradient-text">NVISION</span>
-              <br />
-              A New Tech Experience
-            </h1>
-            <p className="text-lg text-slate-600 md:text-xl">
-              A 1-day immersive tech event uniting various domains of Technology
-            </p>
-            <div className="flex flex-wrap items-center gap-3 text-sm text-slate-700">
-              <span className="rounded-full bg-white px-3 py-1 font-semibold text-blue-600">
-                Date: 12 January 2026
-              </span>
-              <span className="rounded-full bg-white px-3 py-1 font-semibold text-slate-700">
-                Venue: NIT Durgapur, West Bengal, India
-              </span>
-            </div>
-            <div className="flex flex-wrap items-center gap-4 pointer-events-auto">
-              <a
-                href={registrationLink}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px]"
-              >
-                Register Now
-              </a>
-              <Link
-                to="/events"
-                className="rounded-full border border-blue-200 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-blue-500 transition hover:bg-blue-50"
-              >
-                Explore Events
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-4 text-sm text-slate-600 md:max-w-xl">
-              {moments.map((item) => (
-                <div key={item} className="glass flex items-center gap-3 rounded-2xl px-3 py-3">
-                  <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
-                  <p>{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Soft overlay to keep text readable on top of car */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-red-500/60 via-purple-500/60 to-blue-600/60" />
 
-          <div className="glass relative mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-slate-200 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.1)]">
-            <div className="absolute -left-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-cyan-200/60 to-blue-200/40 blur-[70px]" />
-            <div className="absolute -right-12 -bottom-10 h-28 w-28 rounded-full bg-gradient-to-br from-sky-200/60 to-amber-200/40 blur-[70px]" />
-            <div className="relative space-y-4">
-              <p className="pill inline-block">Premium Pass</p>
-              <h3 className="text-2xl font-bold text-slate-900">Experience the future, live.</h3>
-              <p className="text-sm text-slate-600">
-                Unlock curated labs, private lounges, and the NVISION night summit. The event built
-                for creators who move faster than light.
+      {/* Hero area at TOP of page, above background */}
+      <div className="relative min-h-[70vh]">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl space-y-6">
+              <span className="pill">An IEEE SB NITD Event </span>
+              <h1 className="text-4xl font-black leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+                <span className="gradient-text">NVISION</span>
+                <br />
+                A New Tech Experience
+              </h1>
+              <p className="text-lg text-slate-600 md:text-xl">
+                Drive into a 3D robotics experience – design, code, and race intelligent rovers in an immersive arena.
               </p>
-              <div className="divider" />
-              <div className="flex items-center justify-between text-sm text-slate-600">
-                <span>Access</span>
-                <span className="font-semibold text-blue-500">1 Day Event</span>
+              <div className="flex flex-wrap items-center gap-3 text-sm text-slate-700">
+                <span className="rounded-full bg-white px-3 py-1 font-semibold text-blue-600">
+                  12 January 2026 • NIT Durgapur
+                </span>
+                <span className="rounded-full bg-white px-3 py-1 font-semibold text-slate-700">
+                  Hands-on robotics, coding labs, and live car simulations
+                </span>
               </div>
-              <div className="flex items-center justify-between text-sm text-slate-600">
-                <span>Location</span>
-                <span className="font-semibold text-blue-500">National Institute of Technology Durgapur</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href={registrationLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px]"
+                >
+                  Register Now
+                </a>
+                <Link
+                  to="/events"
+                  className="rounded-full border border-blue-200 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-blue-500 transition hover:bg-blue-50"
+                >
+                  Explore Events
+                </Link>
               </div>
-              <div className="flex items-center justify-between text-sm text-slate-600">
-                <span>Launch</span>
-                <span className="font-semibold text-blue-500">2026 Edition</span>
+              <div className="grid grid-cols-2 gap-4 text-sm text-slate-600 md:max-w-xl">
+                {moments.map((item) => (
+                  <div key={item} className="glass flex items-center gap-3 rounded-2xl px-3 py-3">
+                    <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="glass relative mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-slate-200 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.1)]">
+              <div className="absolute -left-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-cyan-200/60 to-blue-200/40 blur-[70px]" />
+              <div className="absolute -right-12 -bottom-10 h-28 w-28 rounded-full bg-gradient-to-br from-sky-200/60 to-amber-200/40 blur-[70px]" />
+              <div className="relative space-y-4">
+                <p className="pill inline-block">Premium Pass</p>
+                <h3 className="text-2xl font-bold text-slate-900">Experience the future, live.</h3>
+                <p className="text-sm text-slate-600">
+                  Unlock curated labs, private lounges, and the NVISION night summit. The event built
+                  for creators who move faster than light.
+                </p>
+                <div className="divider" />
+                <div className="flex items-center justify-between text-sm text-slate-600">
+                  <span>Access</span>
+                  <span className="font-semibold text-blue-500">1 Day Event</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-slate-600">
+                  <span>Location</span>
+                  <span className="font-semibold text-blue-500">National Institute of Technology Durgapur</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-slate-600">
+                  <span>Launch</span>
+                  <span className="font-semibold text-blue-500">2026 Edition</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
+      {/* Simple zoom controls on the side (only affect background car) */}
+      <div className="fixed right-4 top-1/2 z-20 -translate-y-1/2">
+        <div className="flex flex-col rounded-2xl bg-black/40 p-2 backdrop-blur-sm shadow-lg space-y-2">
+          <button
+            type="button"
+            className="rounded-lg bg-white/95 px-3 py-1 text-xs font-semibold text-slate-900 hover:bg-white"
+            onClick={() => setCarZoom((z) => Math.max(4, z - 0.5))}
+          >
+            + Zoom
+          </button>
+          <button
+            type="button"
+            className="rounded-lg bg-white/95 px-3 py-1 text-xs font-semibold text-slate-900 hover:bg-white"
+            onClick={() => setCarZoom((z) => Math.min(12, z + 0.5))}
+          >
+            − Zoom
+          </button>
+        </div>
+      </div>
+
+      {/* Rest of the page content below hero */}
+      <div className="relative z-10 mx-auto mt-10 flex max-w-6xl flex-col gap-12 px-4 pb-16 md:px-6">
         <div className="section-card">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
