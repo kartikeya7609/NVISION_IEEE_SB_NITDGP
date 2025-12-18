@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Canvas } from '@react-three/fiber'
 import ieeeLogo from '../assets/ieee-logo.svg'
+import RotatableCar from '../components/RotatableCar'
 
 const targetDate = new Date('2026-01-12T09:00:00')
 const registrationLink = 'https://forms.gle/your-registration-form'
@@ -53,14 +55,27 @@ function HomePage() {
   }, [calculateTimeLeft])
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-cyan-50">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/4 top-0 h-80 w-80 rounded-full bg-blue-200/60 blur-[120px] animate-blob" />
-        <div className="absolute right-1/5 top-10 h-72 w-72 rounded-full bg-sky-200/50 blur-[110px] animate-blob" />
-        <div className="absolute -left-16 bottom-0 h-72 w-72 rounded-full bg-amber-200/50 blur-[110px] animate-blob" />
+    <section className="relative overflow-hidden bg-gradient-to-br from-red-500 via-purple-500 to-blue-600">
+      {/* 3D Car Background */}
+      <div className="absolute inset-0 z-0">
+        <Canvas
+          style={{ width: '100%', height: '100%' }}
+          gl={{ alpha: true, antialias: true }}
+        >
+          <RotatableCar />
+        </Canvas>
+      </div>
+      
+      {/* Gradient Overlay for better text readability */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-red-500/80 via-purple-500/80 to-blue-600/80" />
+      
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute left-1/4 top-0 h-80 w-80 rounded-full bg-red-300/40 blur-[120px] animate-blob" />
+        <div className="absolute right-1/5 top-10 h-72 w-72 rounded-full bg-purple-300/40 blur-[110px] animate-blob" />
+        <div className="absolute -left-16 bottom-0 h-72 w-72 rounded-full bg-blue-300/40 blur-[110px] animate-blob" />
       </div>
 
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:px-6 md:pt-16">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl space-y-6">
             <span className="pill">An IEEE SB NITD Event </span>
