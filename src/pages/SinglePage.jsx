@@ -315,43 +315,43 @@ function SinglePage() {
         className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(37,99,235,0.12),transparent_28%),radial-gradient(circle_at_10%_80%,rgba(14,165,233,0.12),transparent_32%)]" />
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-24 md:px-6 md:pt-28">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 pb-12 sm:pb-16 pt-20 sm:pt-24 md:px-6 md:pt-28">
+          <div className="flex flex-col gap-8 sm:gap-10 lg:flex-row lg:items-center lg:justify-between">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-2xl space-y-6"
+              className="max-w-2xl space-y-4 sm:space-y-6"
             >
-              <span className="pill">An IEEE SB NITD Event</span>
-              <h1 className="text-4xl font-black leading-tight text-slate-900 md:text-5xl lg:text-6xl">
+              <span className="pill text-xs sm:text-sm">An IEEE SB NITD Event</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-slate-900">
                 <span className="gradient-text">NVISION</span>
                 <br />
                 A New Tech Experience
               </h1>
-              <p className="text-lg text-slate-600 md:text-xl">
+              <p className="text-base sm:text-lg md:text-xl text-slate-600">
                 Drive into a 3D robotics experience – design, code, and race intelligent rovers in an immersive arena.
               </p>
-              <div className="flex flex-wrap items-center gap-3 text-sm text-slate-700">
-                <span className="rounded-full bg-white px-3 py-1 font-semibold text-blue-600 shadow-sm">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-700">
+                <span className="rounded-full bg-white px-2.5 sm:px-3 py-1 font-semibold text-blue-600 shadow-sm">
                   17-18 January 2026 • NIT Durgapur
                 </span>
-                <span className="rounded-full bg-white px-3 py-1 font-semibold text-slate-700 shadow-sm">
+                <span className="rounded-full bg-white px-2.5 sm:px-3 py-1 font-semibold text-slate-700 shadow-sm text-xs">
                   Hands-on robotics, coding labs, and live car simulations
                 </span>
               </div>
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                 <a
                   href={registrationLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(37,99,235,0.45)]"
+                  className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(37,99,235,0.45)]"
                 >
                   Register Now
                 </a>
                 <a
                   href="#highlights"
-                  className="rounded-full border border-blue-200 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-blue-500 transition hover:bg-blue-50"
+                  className="rounded-full border border-blue-200 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-blue-500 transition hover:bg-blue-50"
                 >
                   Explore Events
                 </a>
@@ -362,27 +362,27 @@ function SinglePage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="glass relative mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-slate-200 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.1)]"
+              className="glass relative mx-auto w-full max-w-md overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 p-4 sm:p-6 shadow-[0_25px_70px_rgba(15,23,42,0.1)]"
             >
               <div className="absolute -left-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-cyan-200/60 to-blue-200/40 blur-[70px]" />
               <div className="absolute -right-12 -bottom-10 h-28 w-28 rounded-full bg-gradient-to-br from-sky-200/60 to-amber-200/40 blur-[70px]" />
-              <div className="relative space-y-4">
-                <p className="pill inline-block">Premium Pass</p>
-                <h3 className="text-2xl font-bold text-slate-900">Experience the future, live.</h3>
-                <p className="text-sm text-slate-600">
+              <div className="relative space-y-3 sm:space-y-4">
+                <p className="pill inline-block text-xs sm:text-sm">Premium Pass</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Experience the future, live.</h3>
+                <p className="text-xs sm:text-sm text-slate-600">
                   Unlock curated labs, private lounges, and the NVISION night summit. The event built
                   for creators who move faster than light.
                 </p>
                 <div className="divider" />
-                <div className="flex items-center justify-between text-sm text-slate-600">
+                <div className="flex items-center justify-between text-xs sm:text-sm text-slate-600">
                   <span>Access</span>
                   <span className="font-semibold text-blue-500">2 Day Event</span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-slate-600">
+                <div className="flex items-center justify-between text-xs sm:text-sm text-slate-600">
                   <span>Location</span>
                   <span className="font-semibold text-blue-500">NIT Durgapur</span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-slate-600">
+                <div className="flex items-center justify-between text-xs sm:text-sm text-slate-600">
                   <span>Launch</span>
                   <span className="font-semibold text-blue-500">2026 Edition</span>
                 </div>
@@ -395,14 +395,14 @@ function SinglePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="relative h-[400px] w-full overflow-hidden rounded-3xl border border-amber-200/50 shadow-2xl"
+            className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] w-full overflow-hidden rounded-2xl md:rounded-3xl border border-amber-200/50 shadow-2xl"
             style={{ 
               background: 'transparent',
               backgroundColor: 'transparent'
             }}
           >
             <Canvas gl={{ alpha: true }} camera={{ fov: 60 }}>
-              <RotatableCar zoom={0.0005} />
+              <RotatableCar zoom={0.5} />
             </Canvas>
           </motion.div>
         </div>
@@ -411,10 +411,10 @@ function SinglePage() {
       {/* Countdown Section */}
       <section
         id="countdown"
-        className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20 py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20 py-12 sm:py-16 md:py-20"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(37,99,235,0.12),transparent_28%),radial-gradient(circle_at_10%_80%,rgba(14,165,233,0.12),transparent_32%)]" />
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 md:px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -424,14 +424,14 @@ function SinglePage() {
           >
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-500">
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-blue-500">
                   Countdown
                 </p>
-                <h3 className="text-2xl font-bold text-slate-900">NVISION Starts Soon</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900">NVISION Starts Soon</h3>
               </div>
-              <img src={ieeeLogo} alt="IEEE" className="h-10 w-auto" />
+              <img src={ieeeLogo} alt="IEEE" className="h-8 sm:h-10 w-auto" />
             </div>
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-4">
               {[
                 { label: 'Days', value: timeLeft.days },
                 { label: 'Hours', value: timeLeft.hours },
@@ -446,17 +446,17 @@ function SinglePage() {
       </section>
 
       {/* Features Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20 py-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20 py-12 sm:py-16 md:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(37,99,235,0.12),transparent_28%),radial-gradient(circle_at_10%_80%,rgba(14,165,233,0.12),transparent_32%)]" />
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 md:px-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center"
           >
-            <p className="pill inline-block">Features</p>
-            <h2 className="mt-4 text-4xl font-black text-slate-900 md:text-5xl">
+            <p className="pill inline-block text-xs sm:text-sm">Features</p>
+            <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900">
               What to <span className="gradient-text">Expect</span>
             </h2>
           </motion.div>
@@ -499,11 +499,11 @@ function SinglePage() {
             viewport={{ once: true }}
             className="flex flex-col items-start gap-3"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
               Event Highlights
             </p>
-            <h2 className="text-4xl font-black text-slate-900 md:text-5xl">NVISION Past Moments</h2>
-            <p className="max-w-2xl text-base text-slate-600">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900">NVISION Past Moments</h2>
+            <p className="max-w-2xl text-sm sm:text-base text-slate-600">
               An Event with Lots of Learning and Fun and you'll get to meet new people.
             </p>
           </motion.div>
@@ -513,11 +513,11 @@ function SinglePage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-2xl shadow-blue-100/70"
+            className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-100 bg-white shadow-2xl shadow-blue-100/70"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="relative h-[520px]">
+            <div className="relative h-[300px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
               {slides.map((slide, index) => {
                 const isActive = index === currentSlide
                 return (
@@ -536,9 +536,9 @@ function SinglePage() {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
-                      <div className="absolute inset-0 flex flex-col justify-end p-6 text-slate-900 md:p-10">
-                        <h3 className="text-3xl font-bold md:text-4xl">{slide.title}</h3>
-                        <p className="mt-3 max-w-2xl text-lg text-slate-700">{slide.description}</p>
+                      <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 md:p-10 text-slate-900">
+                        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">{slide.title}</h3>
+                        <p className="mt-2 sm:mt-3 max-w-2xl text-sm sm:text-base md:text-lg text-slate-700">{slide.description}</p>
                       </div>
                     </div>
                   </div>
@@ -546,11 +546,11 @@ function SinglePage() {
               })}
             </div>
 
-            <div className="absolute inset-0 flex items-center justify-between px-4 md:px-6">
+            <div className="absolute inset-0 flex items-center justify-between px-2 sm:px-4 md:px-6">
               <button
                 type="button"
                 onClick={handlePrev}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl text-slate-700 shadow-lg shadow-slate-200 transition hover:bg-gradient-to-r hover:from-sky-500 hover:to-indigo-500 hover:text-white md:h-14 md:w-14"
+                className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-white text-xl sm:text-2xl text-slate-700 shadow-lg shadow-slate-200 transition hover:bg-gradient-to-r hover:from-sky-500 hover:to-indigo-500 hover:text-white"
                 aria-label="Previous slide"
               >
                 {'<'}
@@ -558,14 +558,14 @@ function SinglePage() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl text-slate-700 shadow-lg shadow-slate-200 transition hover:bg-gradient-to-r hover:from-indigo-500 hover:to-sky-500 hover:text-white md:h-14 md:w-14"
+                className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-white text-xl sm:text-2xl text-slate-700 shadow-lg shadow-slate-200 transition hover:bg-gradient-to-r hover:from-indigo-500 hover:to-sky-500 hover:text-white"
                 aria-label="Next slide"
               >
                 {'>'}
               </button>
             </div>
 
-            <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-2">
+            <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex items-center justify-center gap-2">
               {slides.map((_, index) => (
                 <button
                   key={index}
@@ -585,26 +585,26 @@ function SinglePage() {
       {/* About Section */}
       <section
         id="about"
-        className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20 py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20 py-12 sm:py-16 md:py-20"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(37,99,235,0.12),transparent_28%),radial-gradient(circle_at_10%_80%,rgba(14,165,233,0.12),transparent_32%)]" />
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10 md:gap-12 px-4 md:px-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-3 text-center"
+            className="space-y-2 sm:space-y-3 text-center"
           >
-            <span className="pill">Event Details</span>
-            <h2 className="text-4xl font-black text-slate-900 md:text-5xl">
+            <span className="pill text-xs sm:text-sm">Event Details</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900">
               NVISION <span className="gradient-text">Immersion</span>
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-slate-600">
+            <p className="mx-auto max-w-3xl text-sm sm:text-base md:text-lg text-slate-600">
               A focused 1-day event designed for hands-on learning, innovation, and community engagement.
             </p>
           </motion.div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {highlights.map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -625,44 +625,44 @@ function SinglePage() {
 
           <div className="divider" />
 
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             {/* Timeline: Slide from left */}
            <motion.div 
   initial={{ opacity: 0, x: -50 }} 
   whileInView={{ opacity: 1, x: 0 }}
   viewport={{ once: true, margin: "-100px" }}
   transition={{ duration: 0.6, ease: "easeOut" }}
-  className="relative p-8 rounded-3xl bg-white/60 border border-slate-100 shadow-2xl shadow-blue-900/5 backdrop-blur-xl"
+  className="relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-slate-100 shadow-2xl shadow-blue-900/5 backdrop-blur-xl"
 >
-  <div className="flex items-center gap-3 mb-8">
-    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+  <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+    <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-100 text-blue-600">
+      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
     </span>
     <div>
-      <p className="text-xs font-bold tracking-wider text-blue-600 uppercase">Experience Path</p>
-      <h3 className="text-xl font-bold text-slate-900">Signature Timeline</h3>
+      <p className="text-[10px] sm:text-xs font-bold tracking-wider text-blue-600 uppercase">Experience Path</p>
+      <h3 className="text-lg sm:text-xl font-bold text-slate-900">Signature Timeline</h3>
     </div>
   </div>
 
-  <div className="relative space-y-0 ml-2">
+  <div className="relative space-y-0 ml-1 sm:ml-2">
     {timeline.map((entry, idx) => (
-      <div key={entry.title} className="group relative pb-10 last:pb-0 pl-10 border-l-2 border-slate-200 hover:border-blue-400 transition-colors duration-300">
+      <div key={entry.title} className="group relative pb-8 sm:pb-10 last:pb-0 pl-8 sm:pl-10 border-l-2 border-slate-200 hover:border-blue-400 transition-colors duration-300">
         
-        <div className="absolute -left-[9px] top-0 transition-transform duration-300 group-hover:scale-110">
-          <div className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-white ring-4 ring-white">
-            <div className={`h-2.5 w-2.5 rounded-full shadow-sm ${idx === 0 ? 'bg-blue-500 animate-pulse' : 'bg-slate-300 group-hover:bg-blue-400'} transition-colors duration-300`} />
+        <div className="absolute -left-[7px] sm:-left-[9px] top-0 transition-transform duration-300 group-hover:scale-110">
+          <div className="flex h-[14px] w-[14px] sm:h-[18px] sm:w-[18px] items-center justify-center rounded-full bg-white ring-3 sm:ring-4 ring-white">
+            <div className={`h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full shadow-sm ${idx === 0 ? 'bg-blue-500 animate-pulse' : 'bg-slate-300 group-hover:bg-blue-400'} transition-colors duration-300`} />
           </div>
         </div>
 
         {/* Content */}
         <div className="-mt-1.5 transition-all duration-300 group-hover:translate-x-1">
-          <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-500 mb-1 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
+          <span className="inline-block px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-bold bg-slate-100 text-slate-500 mb-1 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
             {entry.time}
           </span>
-          <p className="text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+          <p className="text-sm sm:text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
             {entry.title}
           </p>
-          <p className="mt-1 text-sm text-slate-500 leading-relaxed group-hover:text-slate-600">
+          <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed group-hover:text-slate-600">
             {entry.detail}
           </p>
         </div>
@@ -676,21 +676,21 @@ function SinglePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="section-card flex flex-col gap-4"
+              className="section-card flex flex-col gap-3 sm:gap-4"
             >
-              <p className="pill mb-4">Premium Perks</p>
-              <ul className="space-y-4 text-sm text-slate-600 flex flex-row flex-wrap gap-3">
+              <p className="pill mb-3 sm:mb-4 text-xs sm:text-sm">Premium Perks</p>
+              <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-slate-600 flex flex-col gap-2 sm:gap-3">
                 {perks.map((perk, idx) => (
                   <li
                     key={perk.title}
-                    className="flex items-start flex-row gap-3"
+                    className="flex items-start flex-row gap-2 sm:gap-3"
                   >
-                    <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
-                    <p className="text-sm text-slate-600">{perk.detail}</p>
+                    <span className="mt-1 h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex-shrink-0" />
+                    <p className="text-xs sm:text-sm text-slate-600">{perk.detail}</p>
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 rounded-2xl bg-blue-50/60 p-4 text-sm text-slate-600">
+              <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-2xl bg-blue-50/60 p-3 sm:p-4 text-xs sm:text-sm text-slate-600">
                 <p className="font-semibold text-blue-500">Venue</p>
                 <p>
                   DM Sen Auditorium, Beside ECE Department, National Institute of Technology Durgapur.
@@ -704,52 +704,52 @@ function SinglePage() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20 py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/20 py-12 sm:py-16 md:py-20"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(37,99,235,0.12),transparent_28%),radial-gradient(circle_at_10%_80%,rgba(14,165,233,0.12),transparent_32%)]" />
-        <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-10 px-4 md:px-6">
+        <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-8 sm:gap-10 px-4 md:px-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-2 sm:gap-3"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
               Contact Us
             </p>
-            <h1 className="text-4xl font-black text-slate-900 md:text-5xl">IEEE SB NIT Durgapur</h1>
-            <p className="max-w-2xl text-base text-slate-600">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900">IEEE SB NIT Durgapur</h1>
+            <p className="max-w-2xl text-sm sm:text-base text-slate-600">
               Mahatma Gandhi Avenue, Durgapur, West Bengal, India
             </p>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-slate-600">
               <span className="font-semibold text-blue-600">Email:</span>
               <a
-                className="text-slate-700 underline decoration-blue-400/60 underline-offset-4"
+                className="text-slate-700 underline decoration-blue-400/60 underline-offset-4 break-all"
                 href="mailto:ieeesb.nitdgp@gmail.com"
               >
                 ieeesb.nitdgp@gmail.com
               </a>
             </div>
-            <div className="flex flex-col gap-1 text-sm text-slate-600">
+            <div className="flex flex-col gap-1 text-xs sm:text-sm text-slate-600">
               <span className="font-semibold text-blue-600">Phone:</span>
               <span>+91 7439 652 300</span>
               <span>+91 6290 292 166</span>
             </div>
           </motion.div>
 
-          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1.05fr_0.95fr]">
             {/* Form: Slide from left */}
             <motion.div 
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="section-card flex flex-col gap-5"
+              className="section-card flex flex-col gap-4 sm:gap-5"
             >
-              <h2 className="text-2xl font-semibold text-slate-900">Send a Message</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-slate-900">Send a Message</h2>
               {submitStatus.type && (
                 <div
-                  className={`rounded-xl border p-4 text-sm ${
+                  className={`rounded-xl border p-3 sm:p-4 text-xs sm:text-sm ${
                     submitStatus.type === 'success'
                       ? 'border-green-200 bg-green-50 text-green-800'
                       : 'border-red-200 bg-red-50 text-red-800'
@@ -758,9 +758,9 @@ function SinglePage() {
                   {submitStatus.message}
                 </div>
               )}
-              <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-semibold text-slate-700" htmlFor="name">
+              <form className="flex flex-col gap-3 sm:gap-4" onSubmit={handleSubmit}>
+                <div className="flex flex-col gap-1.5 sm:gap-2">
+                  <label className="text-xs sm:text-sm font-semibold text-slate-700" htmlFor="name">
                     Name
                   </label>
                   <input
@@ -770,13 +770,13 @@ function SinglePage() {
                     placeholder="Your name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-800 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-slate-800 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-semibold text-slate-700" htmlFor="email">
+                <div className="flex flex-col gap-1.5 sm:gap-2">
+                  <label className="text-xs sm:text-sm font-semibold text-slate-700" htmlFor="email">
                     Email
                   </label>
                   <input
@@ -786,13 +786,13 @@ function SinglePage() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-800 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-slate-800 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-semibold text-slate-700" htmlFor="description">
+                <div className="flex flex-col gap-1.5 sm:gap-2">
+                  <label className="text-xs sm:text-sm font-semibold text-slate-700" htmlFor="description">
                     Description
                   </label>
                   <textarea
@@ -802,7 +802,7 @@ function SinglePage() {
                     rows={4}
                     value={formData.description}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-800 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-slate-800 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={isSubmitting}
                   />
@@ -810,7 +810,7 @@ function SinglePage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white shadow-[0_15px_30px_rgba(37,99,235,0.35)] transition hover:translate-y-[-1px] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Submit'}
                 </button>
@@ -823,25 +823,26 @@ function SinglePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="section-card flex flex-col gap-4"
+              className="section-card flex flex-col gap-3 sm:gap-4"
             >
-              <h2 className="text-2xl font-semibold text-slate-900">Location</h2>
-              <p className="text-sm text-slate-600">
+              <h2 className="text-xl sm:text-2xl font-semibold text-slate-900">Location</h2>
+              <p className="text-xs sm:text-sm text-slate-600">
                 Mahatma Gandhi Avenue, Durgapur, West Bengal, India
               </p>
-              <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-[0_15px_35px_rgba(15,23,42,0.08)]">
+              <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 shadow-[0_15px_35px_rgba(15,23,42,0.08)]">
                 <iframe
                   title="NIT Durgapur Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.4173420727927!2d87.29134897556928!3d23.547061597184575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f77190e7d92e31%3A0x3317bea82552f201!2sNational%20Institute%20of%20Technology%2C%20Durgapur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                   width="100%"
-                  height="280"
+                  height="240"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
+                  className="h-[200px] sm:h-[240px] md:h-[280px]"
                 />
               </div>
-              <div className="flex flex-col gap-2 text-sm text-slate-600">
+              <div className="flex flex-col gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-600">
                 <span className="font-semibold text-blue-600">Visit Us</span>
                 <span>IEEE Student Branch, NIT Durgapur</span>
                 <span>Mahatma Gandhi Avenue</span>

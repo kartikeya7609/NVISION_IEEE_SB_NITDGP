@@ -63,10 +63,10 @@ function Navbar() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
       scrolled ? 'py-3' : 'py-6'
     }`}>
-      <div className={`mx-auto flex items-center justify-between transition-all duration-500 ease-in-out border border-white/20 bg-white/70 backdrop-blur-md shadow-2xl px-3 ${
+      <div className={`mx-auto flex items-center justify-between transition-all duration-500 ease-in-out border border-white/20 bg-white/70 backdrop-blur-md shadow-2xl px-2 sm:px-3 ${
         scrolled 
-          ? 'max-w-[90%] md:max-w-5xl rounded-full py-2 shadow-blue-500/10' 
-          : 'max-w-[95%] md:max-w-7xl rounded-2xl py-3'
+          ? 'max-w-[90%] md:max-w-5xl rounded-full py-1.5 sm:py-2 shadow-blue-500/10' 
+          : 'max-w-[95%] md:max-w-7xl rounded-xl sm:rounded-2xl py-2 sm:py-3'
       }`}>
         
         {/* Logo Section */}
@@ -75,12 +75,12 @@ function Navbar() {
           onClick={(e) => handleScroll(e, '#home')}
           className="group flex items-center gap-3 cursor-pointer"
         >
-          <div className="relative overflow-hidden rounded-lg bg-blue-50 p-1 transition-transform group-hover:scale-110">
-            <img src={ieeeLogo} alt="Logo" className="h-8 w-auto md:h-10" />
+          <div className="relative overflow-hidden rounded-lg bg-blue-50 p-0.5 sm:p-1 transition-transform group-hover:scale-110">
+            <img src={ieeeLogo} alt="Logo" className="h-7 w-auto sm:h-8 md:h-10" />
           </div>
           <div className={scrolled ? 'hidden md:block' : 'block'}>
-            <p className="text-lg font-black tracking-tight text-slate-900 leading-none">NVISION</p>
-            <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-blue-600">NIT Durgapur</p>
+            <p className="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-none">NVISION</p>
+            <p className="text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.2em] text-blue-600">NIT Durgapur</p>
           </div>
         </a>
 

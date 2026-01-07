@@ -57,18 +57,18 @@ const handleScroll = (e, href) => {
 function Footer() {
   return (
     <footer className="border-t border-blue-900/40 bg-gradient-to-tr from-slate-950 via-blue-950 to-black text-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 md:flex-row md:items-center md:justify-between md:px-6">
-        <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500 shadow-[0_20px_40px_rgba(37,99,235,0.5)]">
-            <span className="text-xl font-extrabold text-white">N</span>
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 sm:gap-8 px-4 py-8 sm:py-10 md:flex-row md:items-center md:justify-between md:px-6">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500 shadow-[0_20px_40px_rgba(37,99,235,0.5)]">
+            <span className="text-lg sm:text-xl font-extrabold text-white">N</span>
           </div>
           <div>
-            <p className="text-lg font-extrabold text-white">NVISION</p>
-            <p className="text-sm text-blue-200/90">Best in the world tech experience.</p>
+            <p className="text-base sm:text-lg font-extrabold text-white">NVISION</p>
+            <p className="text-xs sm:text-sm text-blue-200/90">Best in the world tech experience.</p>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 text-sm text-slate-300/80">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-slate-300/80">
           {links.map((link) => (
             link.href.startsWith('http') ? (
               <a

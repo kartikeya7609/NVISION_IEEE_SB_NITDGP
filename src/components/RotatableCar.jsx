@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { PerspectiveCamera, OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
-function Car({ isDragging }) {
+function Car({ isDragging, scale = 0.3 }) {
   const carRef = useRef();
   const { scene } = useGLTF("/untitled (2).glb");
 
@@ -13,6 +13,26 @@ function Car({ isDragging }) {
       const beachSandColor = new THREE.Color("#E6D5B8"); // Warm beach sand color
       const lightSandColor = new THREE.Color("#F4E4BC"); // Light sand highlight
       const blackColor = new THREE.Color("#000000"); // Black for wheels
+      const targetBlueColor = new THREE.Color("#1F3C88"); // Specific blue color to convert
+      
+      // Helper function to check if a color matches the target blue (#1F3C88)
+      const matchesTargetBlue = (color) => {
+        const r = color.r;
+        const g = color.g;
+        const b = color.b;
+        // #1F3C88 = RGB(31, 60, 136) normalized = RGB(0.122, 0.235, 0.533)
+        // Check if color is close to target blue (within tolerance)
+        const tolerance = 0.15;
+        const targetR = 0.122;
+        const targetG = 0.235;
+        const targetB = 0.533;
+        
+        return (
+          Math.abs(r - targetR) < tolerance &&
+          Math.abs(g - targetG) < tolerance &&
+          Math.abs(b - targetB) < tolerance
+        );
+      };
       
       // Helper function to check if a color is blue (more aggressive detection)
       const isBlueColor = (color) => {
@@ -62,8 +82,10 @@ function Car({ isDragging }) {
             if (mat.isMeshStandardMaterial || mat.isMeshPhysicalMaterial || mat.isMeshLambertMaterial) {
               const originalColor = mat.color.clone();
               
-              // Log original color for blue detection
-              if (isBlueColor(originalColor)) {
+              // Log original color for detection
+              if (matchesTargetBlue(originalColor)) {
+                console.log(`  → Found target blue (#1F3C88) in "${meshName}": RGB(${originalColor.r.toFixed(2)}, ${originalColor.g.toFixed(2)}, ${originalColor.b.toFixed(2)})`);
+              } else if (isBlueColor(originalColor)) {
                 console.log(`  → Found blue material in "${meshName}": RGB(${originalColor.r.toFixed(2)}, ${originalColor.g.toFixed(2)}, ${originalColor.b.toFixed(2)})`);
               }
               
@@ -74,7 +96,17 @@ function Car({ isDragging }) {
                 mat.roughness = 0.9;
                 console.log(`  → Applied BLACK to wheel: "${meshName}"`);
               }
-              // Apply beach sand color to ALL blue materials (plates and any blue parts)
+              // Apply beach sand color to target blue (#1F3C88) - highest priority
+              else if (matchesTargetBlue(originalColor)) {
+                // Use beach sand color with slight variation
+                const sandColor = new THREE.Color().lerpColors(beachSandColor, lightSandColor, Math.random() * 0.3);
+                mat.color = sandColor;
+                mat.metalness = 0.2;
+                mat.roughness = 0.6;
+                mat.envMapIntensity = 1.2;
+                console.log(`  → Applied BEACH SAND to target blue (#1F3C88): "${meshName}"`);
+              }
+              // Apply beach sand color to ALL other blue materials (plates and any blue parts)
               else if (isBlueColor(originalColor)) {
                 // Use beach sand color with slight variation
                 const sandColor = new THREE.Color().lerpColors(beachSandColor, lightSandColor, Math.random() * 0.3);
@@ -118,7 +150,7 @@ function Car({ isDragging }) {
     <primitive
       ref={carRef}
       object={scene}
-      scale={0.3}
+      scale={scale}
       position={[0, -0.2, 0]}
       castShadow
       receiveShadow
@@ -128,12 +160,23 @@ function Car({ isDragging }) {
 
 export default function RotatableCar({ zoom = 6 }) {
   const [isDragging, setIsDragging] = useState(false);
+  const { viewport } = useThree();
+  
+  // Responsive scale and zoom based on viewport width
+  const isMobile = viewport.width < 4; // Mobile viewport width threshold
+  const isTablet = viewport.width >= 4 && viewport.width < 8;
+  
+  const carScale = isMobile ? 0.05 : isTablet ? 0.05 : 0.05;
+  const cameraZoom = isMobile ? zoom * 1.2 : isTablet ? zoom * 1.1 : zoom;
+  const cameraY = isMobile ? 0.4 : isTablet ? 0.45 : 0.5;
+  const fov = isMobile ? 65 : isTablet ? 62 : 60;
+  
   return (
     <>
       {/* Enhanced environment for educational prototype display */}
       <Environment preset="sunset" background={false} />
       
-      <PerspectiveCamera makeDefault position={[0, 0.5, zoom]} fov={60} />
+      <PerspectiveCamera makeDefault position={[0, cameraY, cameraZoom]} fov={fov} />
       
       {/* Optimized lighting for educational car model prototype */}
       <ambientLight intensity={1.0} color="#F4E4BC" /> {/* Warm sand ambient light */}
@@ -167,15 +210,15 @@ export default function RotatableCar({ zoom = 6 }) {
       {/* Ground plane removed for transparent background */}
 
       {/* Car auto-rotates via OrbitControls; user can rotate with mouse, zoom via buttons */}
-      <Car isDragging={isDragging} />
+      <Car isDragging={isDragging} scale={carScale} />
 
       <OrbitControls
         enablePan={false}
         enableZoom={true}
         autoRotate
         autoRotateSpeed={0.6}
-        minDistance={2}
-        maxDistance={10}
+        minDistance={isMobile ? 1.5 : isTablet ? 1.8 : 2}
+        maxDistance={isMobile ? 8 : isTablet ? 9 : 10}
         onStart={() => setIsDragging(true)}
         onEnd={() => setIsDragging(false)}
       />
