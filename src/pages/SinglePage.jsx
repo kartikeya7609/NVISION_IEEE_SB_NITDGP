@@ -334,7 +334,7 @@ function SinglePage() {
               </p>
               <div className="flex flex-wrap items-center gap-3 text-sm text-slate-700">
                 <span className="rounded-full bg-white px-3 py-1 font-semibold text-blue-600 shadow-sm">
-                  12 January 2026 • NIT Durgapur
+                  17-18 January 2026 • NIT Durgapur
                 </span>
                 <span className="rounded-full bg-white px-3 py-1 font-semibold text-slate-700 shadow-sm">
                   Hands-on robotics, coding labs, and live car simulations
@@ -376,7 +376,7 @@ function SinglePage() {
                 <div className="divider" />
                 <div className="flex items-center justify-between text-sm text-slate-600">
                   <span>Access</span>
-                  <span className="font-semibold text-blue-500">1 Day Event</span>
+                  <span className="font-semibold text-blue-500">2 Day Event</span>
                 </div>
                 <div className="flex items-center justify-between text-sm text-slate-600">
                   <span>Location</span>
@@ -395,10 +395,14 @@ function SinglePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="relative h-[400px] w-full overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-blue-50/50 to-cyan-50/50 shadow-2xl"
+            className="relative h-[400px] w-full overflow-hidden rounded-3xl border border-amber-200/50 shadow-2xl"
+            style={{ 
+              background: 'transparent',
+              backgroundColor: 'transparent'
+            }}
           >
-            <Canvas>
-              <RotatableCar zoom={6} />
+            <Canvas gl={{ alpha: true }} camera={{ fov: 60 }}>
+              <RotatableCar zoom={0.0005} />
             </Canvas>
           </motion.div>
         </div>

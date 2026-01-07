@@ -1,219 +1,186 @@
-import { useRef, useMemo, useState } from 'react'
-import { useFrame, useLoader } from '@react-three/fiber'
-import { PerspectiveCamera, OrbitControls } from '@react-three/drei'
-import * as THREE from 'three'
-import nvisionTexture from '../assets/Nvision_1st_slide.jpg'
+import { useRef, useState, useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
+import { PerspectiveCamera, OrbitControls, useGLTF, Environment } from "@react-three/drei";
+import * as THREE from "three";
 
 function Car({ isDragging }) {
-  const carRef = useRef()
-  const texture = useLoader(THREE.TextureLoader, nvisionTexture)
-  
-  // Configure texture
-  useMemo(() => {
-    texture.wrapS = THREE.RepeatWrapping
-    texture.wrapT = THREE.RepeatWrapping
-    texture.repeat.set(1, 1)
-  }, [texture])
-  
+  const carRef = useRef();
+  const { scene } = useGLTF("/untitled (2).glb");
+
+  // Apply beach sand color to blue plates and black to wheels
+  useEffect(() => {
+    if (scene) {
+      const beachSandColor = new THREE.Color("#E6D5B8"); // Warm beach sand color
+      const lightSandColor = new THREE.Color("#F4E4BC"); // Light sand highlight
+      const blackColor = new THREE.Color("#000000"); // Black for wheels
+      
+      // Helper function to check if a color is blue (more aggressive detection)
+      const isBlueColor = (color) => {
+        const r = color.r;
+        const g = color.g;
+        const b = color.b;
+        // Check if blue component is dominant (blue > red and blue > green) or if it's a blue hue
+        // Also check for cyan/light blue colors
+        const isBlue = (b > r && b > g && b > 0.2) || 
+                       (b > 0.4 && (b - r) > 0.1 && (b - g) > 0.1);
+        return isBlue;
+      };
+      
+      // Helper function to check if mesh is a wheel
+      const isWheel = (mesh) => {
+        const name = mesh.name?.toLowerCase() || "";
+        const parentName = mesh.parent?.name?.toLowerCase() || "";
+        // Check if name contains wheel-related keywords
+        return (
+          name.includes("wheel") ||
+          name.includes("tire") ||
+          name.includes("rim") ||
+          name.includes("tyre") ||
+          parentName.includes("wheel") ||
+          parentName.includes("tire")
+        );
+      };
+      
+      console.log("=== GLB File Structure Analysis ===");
+      let meshCount = 0;
+      
+      scene.traverse((child) => {
+        if (child.isMesh && child.material) {
+          meshCount++;
+          const meshName = child.name || `Mesh_${meshCount}`;
+          const isWheelMesh = isWheel(child);
+          
+          console.log(`Mesh ${meshCount}: "${meshName}"`, {
+            isWheel: isWheelMesh,
+            position: child.position,
+            materialType: Array.isArray(child.material) 
+              ? `Array[${child.material.length}]` 
+              : child.material.type
+          });
+          
+          const processMaterial = (mat) => {
+            if (mat.isMeshStandardMaterial || mat.isMeshPhysicalMaterial || mat.isMeshLambertMaterial) {
+              const originalColor = mat.color.clone();
+              
+              // Log original color for blue detection
+              if (isBlueColor(originalColor)) {
+                console.log(`  → Found blue material in "${meshName}": RGB(${originalColor.r.toFixed(2)}, ${originalColor.g.toFixed(2)}, ${originalColor.b.toFixed(2)})`);
+              }
+              
+              // Apply black color to wheels (priority - wheels first)
+              if (isWheelMesh) {
+                mat.color = blackColor;
+                mat.metalness = 0.1;
+                mat.roughness = 0.9;
+                console.log(`  → Applied BLACK to wheel: "${meshName}"`);
+              }
+              // Apply beach sand color to ALL blue materials (plates and any blue parts)
+              else if (isBlueColor(originalColor)) {
+                // Use beach sand color with slight variation
+                const sandColor = new THREE.Color().lerpColors(beachSandColor, lightSandColor, Math.random() * 0.3);
+                mat.color = sandColor;
+                mat.metalness = 0.2;
+                mat.roughness = 0.6;
+                mat.envMapIntensity = 1.2;
+                console.log(`  → Applied BEACH SAND to blue part: "${meshName}"`);
+              }
+              // Keep other materials but enhance them
+              else {
+                mat.metalness = mat.metalness || 0.2;
+                mat.roughness = mat.roughness || 0.6;
+                mat.envMapIntensity = mat.envMapIntensity || 1.2;
+              }
+            }
+          };
+          
+          if (Array.isArray(child.material)) {
+            child.material.forEach(processMaterial);
+          } else {
+            processMaterial(child.material);
+          }
+        }
+      });
+      
+      console.log(`Total meshes processed: ${meshCount}`);
+      console.log("=== End GLB Analysis ===");
+    }
+  }, [scene]);
+
   // Auto-rotate when not being dragged
   useFrame((state, delta) => {
-    if (!carRef.current) return
+    if (!carRef.current) return;
     if (!isDragging) {
-      carRef.current.rotation.y += delta * 0.3
+      carRef.current.rotation.y += delta * 0.3;
     }
-  })
+  });
+
   return (
-    <group ref={carRef}>
-      {/* Main Car Body */}
-      <mesh position={[0, 0, 0]} castShadow receiveShadow>
-        <boxGeometry args={[3, 0.9, 1.4]} />
-        <meshStandardMaterial 
-          map={texture}
-          metalness={0.3} 
-          roughness={0.4}
-          envMapIntensity={1.0}
-        />
-      </mesh>
-
-      {/* Car Roof */}
-      <mesh position={[0, 0.7, 0]} castShadow receiveShadow>
-        <boxGeometry args={[1.8, 0.7, 1.2]} />
-        <meshStandardMaterial 
-          map={texture}
-          metalness={0.3} 
-          roughness={0.4}
-        />
-      </mesh>
-
-      {/* Front Windshield */}
-      <mesh position={[0.4, 0.5, 0]} castShadow>
-        <boxGeometry args={[0.15, 0.6, 1.0]} />
-        <meshStandardMaterial 
-          color="#87ceeb" 
-          transparent 
-          opacity={0.4}
-          roughness={0.05}
-          metalness={0.95}
-        />
-      </mesh>
-
-      {/* Rear Windshield */}
-      <mesh position={[-0.4, 0.5, 0]} castShadow>
-        <boxGeometry args={[0.15, 0.6, 1.0]} />
-        <meshStandardMaterial 
-          color="#87ceeb" 
-          transparent 
-          opacity={0.4}
-          roughness={0.05}
-          metalness={0.95}
-        />
-      </mesh>
-
-      {/* Front Bumper */}
-      <mesh position={[1.6, 0, 0]} castShadow receiveShadow>
-        <boxGeometry args={[0.25, 0.5, 1.5]} />
-        <meshStandardMaterial 
-          map={texture}
-          metalness={0.3} 
-          roughness={0.4}
-        />
-      </mesh>
-
-      {/* Rear Bumper */}
-      <mesh position={[-1.6, 0, 0]} castShadow receiveShadow>
-        <boxGeometry args={[0.25, 0.5, 1.5]} />
-        <meshStandardMaterial 
-          map={texture}
-          metalness={0.3} 
-          roughness={0.4}
-        />
-      </mesh>
-
-      {/* Front Grille */}
-      <mesh position={[1.55, 0.1, 0]} castShadow>
-        <boxGeometry args={[0.1, 0.3, 1.2]} />
-        <meshStandardMaterial 
-          color="#2a2a3e" 
-          metalness={0.7} 
-          roughness={0.3}
-        />
-      </mesh>
-
-      {/* Wheels */}
-      {[
-        { pos: [1.0, -0.5, 0.75] },
-        { pos: [-1.0, -0.5, 0.75] },
-        { pos: [1.0, -0.5, -0.75] },
-        { pos: [-1.0, -0.5, -0.75] },
-      ].map((wheel, i) => (
-        <group key={i} position={wheel.pos}>
-          {/* Wheel Rim */}
-          <mesh castShadow receiveShadow rotation={[Math.PI / 2, 0, 0]}>
-            <cylinderGeometry args={[0.4, 0.4, 0.25, 32]} />
-            <meshStandardMaterial 
-              color="#c0c0c0" 
-              metalness={1} 
-              roughness={0.05}
-            />
-          </mesh>
-          {/* Tire */}
-          <mesh castShadow receiveShadow rotation={[Math.PI / 2, 0, 0]}>
-            <cylinderGeometry args={[0.45, 0.45, 0.3, 32]} />
-            <meshStandardMaterial color="#0a0a0a" roughness={0.95} />
-          </mesh>
-          {/* Rim Detail */}
-          <mesh castShadow rotation={[Math.PI / 2, 0, 0]}>
-            <cylinderGeometry args={[0.25, 0.25, 0.26, 16]} />
-            <meshStandardMaterial 
-              color="#e0e0e0" 
-              metalness={1} 
-              roughness={0.1}
-            />
-          </mesh>
-        </group>
-      ))}
-
-      {/* Headlights */}
-      <mesh position={[1.6, 0.2, 0.45]} castShadow>
-        <sphereGeometry args={[0.18, 16, 16]} />
-        <meshStandardMaterial 
-          color="#ffffcc" 
-          emissive="#ffffaa" 
-          emissiveIntensity={0.8}
-          roughness={0.1}
-        />
-      </mesh>
-      <mesh position={[1.6, 0.2, -0.45]} castShadow>
-        <sphereGeometry args={[0.18, 16, 16]} />
-        <meshStandardMaterial 
-          color="#ffffcc" 
-          emissive="#ffffaa" 
-          emissiveIntensity={0.8}
-          roughness={0.1}
-        />
-      </mesh>
-
-      {/* Side Mirrors */}
-      <mesh position={[0.7, 0.4, 0.7]} castShadow>
-        <boxGeometry args={[0.2, 0.12, 0.12]} />
-        <meshStandardMaterial color="#333" metalness={0.9} roughness={0.1} />
-      </mesh>
-      <mesh position={[0.7, 0.4, -0.7]} castShadow>
-        <boxGeometry args={[0.2, 0.12, 0.12]} />
-        <meshStandardMaterial color="#333" metalness={0.9} roughness={0.1} />
-      </mesh>
-
-      {/* Spoiler */}
-      <mesh position={[-1.5, 0.6, 0]} castShadow>
-        <boxGeometry args={[0.15, 0.25, 1.3]} />
-        <meshStandardMaterial map={texture} metalness={0.3} roughness={0.4} />
-      </mesh>
-
-      {/* Side Skirts */}
-      <mesh position={[0, -0.3, 0.75]} castShadow>
-        <boxGeometry args={[2.5, 0.1, 0.05]} />
-        <meshStandardMaterial map={texture} metalness={0.3} roughness={0.4} />
-      </mesh>
-      <mesh position={[0, -0.3, -0.75]} castShadow>
-        <boxGeometry args={[2.5, 0.1, 0.05]} />
-        <meshStandardMaterial map={texture} metalness={0.3} roughness={0.4} />
-      </mesh>
-
-      {/* Hood Details */}
-      <mesh position={[0.8, 0.15, 0]} castShadow>
-        <boxGeometry args={[0.05, 0.05, 0.8]} />
-        <meshStandardMaterial color="#2a2a3e" metalness={0.7} roughness={0.3} />
-      </mesh>
-    </group>
-  )
+    <primitive
+      ref={carRef}
+      object={scene}
+      scale={0.3}
+      position={[0, -0.2, 0]}
+      castShadow
+      receiveShadow
+    />
+  );
 }
 
 export default function RotatableCar({ zoom = 6 }) {
-  const [isDragging, setIsDragging] = useState(false)
+  const [isDragging, setIsDragging] = useState(false);
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 1.5, zoom]} fov={60} />
-      <ambientLight intensity={0.8} />
-      <directionalLight position={[5, 5, 5]} intensity={2.0} castShadow />
-      <directionalLight position={[-5, 3, -5]} intensity={1.0} />
-      <pointLight position={[0, 5, 0]} intensity={0.8} />
-      <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={0.8} />
-      <spotLight position={[-10, 5, -10]} angle={0.4} penumbra={1} intensity={0.5} />
+      {/* Enhanced environment for educational prototype display */}
+      <Environment preset="sunset" background={false} />
       
+      <PerspectiveCamera makeDefault position={[0, 0.5, zoom]} fov={60} />
+      
+      {/* Optimized lighting for educational car model prototype */}
+      <ambientLight intensity={1.0} color="#F4E4BC" /> {/* Warm sand ambient light */}
+      <directionalLight 
+        position={[6, 8, 5]} 
+        intensity={2.5} 
+        castShadow 
+        color="#FFF8E7" // Warm white light
+      />
+      <directionalLight 
+        position={[-6, 4, -4]} 
+        intensity={1.5} 
+        color="#E6D5B8" // Soft sand fill light
+      />
+      <pointLight position={[0, 6, 0]} intensity={1.2} color="#FFF8E7" />
+      <spotLight
+        position={[8, 10, 8]}
+        angle={0.4}
+        penumbra={1}
+        intensity={1.0}
+        color="#FFF8E7"
+      />
+      <spotLight
+        position={[-8, 6, -8]}
+        angle={0.5}
+        penumbra={1}
+        intensity={0.8}
+        color="#E6D5B8"
+      />
+
+      {/* Ground plane removed for transparent background */}
+
       {/* Car auto-rotates via OrbitControls; user can rotate with mouse, zoom via buttons */}
       <Car isDragging={isDragging} />
 
       <OrbitControls
         enablePan={false}
-        enableZoom={false}
+        enableZoom={true}
         autoRotate
-        autoRotateSpeed={0.7}
-        minDistance={4}
-        maxDistance={12}
+        autoRotateSpeed={0.6}
+        minDistance={2}
+        maxDistance={10}
         onStart={() => setIsDragging(true)}
         onEnd={() => setIsDragging(false)}
-
       />
     </>
-  )
+  );
 }
+
+useGLTF.preload("/untitled (2).glb");
