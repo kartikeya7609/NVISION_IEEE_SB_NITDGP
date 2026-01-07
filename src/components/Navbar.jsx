@@ -123,12 +123,21 @@ function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={toggle}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-900 md:hidden"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-900 md:hidden"
+            aria-label="Toggle menu"
           >
             <div className="relative w-5 h-4">
-              <span className={`absolute h-0.5 w-full bg-current transition-all duration-300 ${open ? 'top-2 rotate-45' : 'top-0'}`} />
-              <span className={`absolute top-2 h-0.5 w-full bg-current transition-all duration-300 ${open ? 'opacity-0' : 'opacity-100'}`} />
-              <span className={`absolute h-0.5 w-full bg-current transition-all duration-300 ${open ? 'top-2 -rotate-45' : 'top-4'}`} />
+              <span 
+                className={`absolute left-1/2 -translate-x-1/2 h-0.5 w-full bg-current transition-all duration-300 ${open ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'}`}
+                style={{ transformOrigin: 'center center' }}
+              />
+              <span 
+                className={`absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-0.5 w-full bg-current transition-all duration-300 ${open ? 'opacity-0' : 'opacity-100'}`}
+              />
+              <span 
+                className={`absolute left-1/2 -translate-x-1/2 h-0.5 w-full bg-current transition-all duration-300 ${open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'}`}
+                style={{ transformOrigin: 'center center' }}
+              />
             </div>
           </button>
         </div>
