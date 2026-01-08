@@ -94,7 +94,7 @@ const highlights = [
   {
     title: 'Venue',
     copy:
-      'National Institute of Technology Durgapur, Mahatma Gandhi Avenue, Durgapur, West Bengal, India.',
+      'Student Activity Centre (SAC) at National Institute of Technology Durgapur, Mahatma Gandhi Avenue, Durgapur, West Bengal, India.',
   },
 ]
 
@@ -380,7 +380,7 @@ function SinglePage() {
                 </div>
                 <div className="flex items-center justify-between text-xs sm:text-sm text-slate-600">
                   <span>Location</span>
-                  <span className="font-semibold text-blue-500">NIT Durgapur</span>
+                  <span className="font-semibold text-blue-500">Student Activity Centre (SAC) at NIT Durgapur</span>
                 </div>
                 <div className="flex items-center justify-between text-xs sm:text-sm text-slate-600">
                   <span>Launch</span>
