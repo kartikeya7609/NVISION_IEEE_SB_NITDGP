@@ -10,8 +10,8 @@ import nvisionSignatureExperience from '../assets/Nvision_1st_slide.jpg'
 import ieeeLogo from '../assets/ieee-logo.svg'
 import emailjs from '@emailjs/browser'
 
-const targetDate = new Date('2026-01-12T09:00:00')
-const registrationLink = 'https://forms.gle/your-registration-form'
+const targetDate = new Date('2026-01-17T09:00:00')
+const registrationLink = 'https://forms.gle/QJdxT3C9YWZyXaL99'
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'x5ns0x845LwLgna6x'
 
 const features = [
@@ -100,32 +100,32 @@ const highlights = [
 
 const timeline = [
   {
-    time: '09:00',
+    time: 'Day 1 - 09:00',
     title: 'Registration & Inauguration',
     detail: 'Participant registration followed by event inauguration and instructions.',
   },
   {
-    time: '10:00',
+    time: 'Day 1 - 10:00',
     title: 'Workshop Session',
     detail: 'Introduction to components, sensors, and control mechanisms for the robotic car.',
   },
   {
-    time: '12:30',
+    time: 'Day 1 - 12:30',
     title: 'Hands-on Build Session',
     detail: 'Participants assemble and wire the remote-controlled car with sensor modules.',
   },
   {
-    time: '14:30',
+    time: 'Day 2 - 9:30',
     title: 'Testing & Debugging',
     detail: 'Track testing, obstacle detection tuning, and code optimization.',
   },
   {
-    time: '16:30',
+    time: 'Day 2 - 10:30',
     title: 'Final Demonstration',
     detail: 'Live demonstration of sensor-based obstacle detection and navigation.',
   },
   {
-    time: '17:30',
+    time: 'Day 2 - 11:30',
     title: 'Results & Valedictory',
     detail: 'Evaluation results, feedback session, and certificate distribution.',
   },
@@ -733,7 +733,7 @@ function SinglePage() {
             <div className="flex flex-col gap-1 text-xs sm:text-sm text-slate-600">
               <span className="font-semibold text-blue-600">Phone:</span>
               <span>+91 7439 652 300</span>
-              <span>+91 6290 292 166</span>
+              <span>+91 7439 133 972</span>
             </div>
           </motion.div>
 
